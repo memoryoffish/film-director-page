@@ -788,6 +788,25 @@ a.soon sup {
     sans-serif;
   line-height: 1.7;
 }
+.foot {
+  flex-wrap: wrap;
+}
+.foot details {
+  flex: 1;
+  min-width: 0;
+}
+.foot .disc {
+  order: 3;
+  flex-basis: 100%;
+  text-align: center;
+  margin-top: 12px;
+  color: var(--muted);
+  font:
+    12px -apple-system,
+    "PingFang SC",
+    sans-serif;
+  opacity: .85;
+}
 .foot .fl {
   display: flex;
   gap: 16px;
