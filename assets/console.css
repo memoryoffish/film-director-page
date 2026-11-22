@@ -1,0 +1,1499 @@
+#fc {
+  --bg:#111214;
+  --card:#1a1c1f;
+  --head:#0c0d0f;
+  --line:#2a2d31;
+  --fg:#e6e6e6;
+  --dim:#9aa0a6;
+  --green:#5ecb8a;
+  --flag:#ff6b6b;
+  --c-wm:#8ab4f8;
+  --c-in:#e0b060;
+  --c-fed:#5ecb8a;
+  --c-film:#f28cb1;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --on:#fff;
+  --flag-fg:#ffb3b3;
+  --badge-fg:#ffd0d0;
+  --cap:rgba(10,11,13,.8);
+  --arrow:#5b6066;
+  --none:#6b7076;
+  --prompt:#d7def2;
+  --track:#141619;
+  --bar:rgba(138,180,248,.16);
+  --bar-ring:rgba(138,180,248,.35);
+  --bar2:rgba(138,180,248,.32);
+  --live:rgba(94,203,138,.5);
+  --playhead:#fff;
+  --shade:rgba(0,0,0,.45);
+  --lb:#151719;
+  --play-fg:#0c0d0f;
+}
+@media (prefers-color-scheme: light) {
+  html:not([data-theme=dark]) #fc {
+    --bg:#f4f4f2;
+    --card:#fff;
+    --head:#ecece8;
+    --line:#d8d8d2;
+    --fg:#1c1c1b;
+    --dim:#5f6368;
+    --green:#1f8f50;
+    --flag:#d23b3b;
+    --c-wm:#3d6fd0;
+    --c-in:#a8740c;
+    --c-fed:#1f8f50;
+    --c-film:#c0457a;
+    --on:#0b0b0b;
+    --flag-fg:#a82828;
+    --badge-fg:#8f1f1f;
+    --cap:rgba(255,255,255,.86);
+    --arrow:#a3a7ad;
+    --none:#8a8f95;
+    --prompt:#22304d;
+    --track:#eef0f2;
+    --bar:rgba(61,111,208,.12);
+    --bar-ring:rgba(61,111,208,.4);
+    --bar2:rgba(61,111,208,.28);
+    --live:rgba(31,143,80,.32);
+    --playhead:#111;
+    --shade:rgba(0,0,0,.10);
+    --lb:#fafafa;
+    --play-fg:#fff;
+  }
+}
+html[data-theme=light] #fc {
+  --bg:#f4f4f2;
+  --card:#fff;
+  --head:#ecece8;
+  --line:#d8d8d2;
+  --fg:#1c1c1b;
+  --dim:#5f6368;
+  --green:#1f8f50;
+  --flag:#d23b3b;
+  --c-wm:#3d6fd0;
+  --c-in:#a8740c;
+  --c-fed:#1f8f50;
+  --c-film:#c0457a;
+  --on:#0b0b0b;
+  --flag-fg:#a82828;
+  --badge-fg:#8f1f1f;
+  --cap:rgba(255,255,255,.86);
+  --arrow:#a3a7ad;
+  --none:#8a8f95;
+  --prompt:#22304d;
+  --track:#eef0f2;
+  --bar:rgba(61,111,208,.12);
+  --bar-ring:rgba(61,111,208,.4);
+  --bar2:rgba(61,111,208,.28);
+  --live:rgba(31,143,80,.32);
+  --playhead:#111;
+  --shade:rgba(0,0,0,.10);
+  --lb:#fafafa;
+  --play-fg:#fff;
+}
+#fc * {
+  box-sizing: border-box;
+}
+#fc,
+#fc {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+}
+#fc {
+  font:
+    14px/1.55 -apple-system,
+    BlinkMacSystemFont,
+    "PingFang SC",
+    "Noto Sans CJK SC",
+    "Microsoft YaHei",
+    sans-serif;
+}
+#fc button {
+  font: inherit;
+  color: inherit;
+}
+#fc [hidden] {
+  display: none !important;
+}
+#fc .wrap {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 12px 16px 0;
+}
+#fc .dim {
+  color: var(--dim);
+}
+#fc .mono {
+  font-family: var(--mono);
+}
+#fc .strip {
+  background: var(--head);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 8px 14px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 14px;
+}
+#fc .strip h1 {
+  font-size: 17px;
+  margin: 0;
+}
+#fc .meta {
+  color: var(--dim);
+  font-size: 13px;
+}
+#fc .chips {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-left: auto;
+}
+#fc .chip {
+  appearance: none;
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 2px 10px;
+  font-size: 13px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+#fc .chip:hover {
+  border-color: var(--green);
+}
+#fc .chip[aria-pressed=true] {
+  background: color-mix(in srgb, var(--green) 14%, transparent);
+  border-color: var(--green);
+  color: var(--on);
+}
+#fc .chip b {
+  color: var(--flag);
+  font-weight: 600;
+  margin-left: 4px;
+}
+#fc .card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-top: 12px;
+}
+#fc .films {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 14px;
+  margin-top: 14px;
+}
+#fc .fcard {
+  appearance: none;
+  text-align: left;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0;
+  overflow: hidden;
+  cursor: pointer;
+}
+#fc .fcard:hover {
+  border-color: var(--green);
+}
+#fc .fcard img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  display: block;
+  background: #000;
+}
+#fc .fcard div {
+  padding: 9px 12px 11px;
+}
+#fc .fcard b {
+  font-size: 16px;
+}
+#fc .fcard .fl {
+  color: var(--flag-fg);
+  font-size: 13px;
+  margin-top: 3px;
+}
+#fc .fl::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--flag);
+  margin-right: 6px;
+  vertical-align: 1px;
+}
+#fc .main {
+  display: grid;
+  grid-template-columns: var(--lw,420px) minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+#fc .left {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+#fc .left figure {
+  margin: 0;
+  border-top: 3px solid var(--c);
+  padding-top: 6px;
+}
+#fc .left video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #000;
+  border-radius: 6px;
+}
+#fc .left figcaption {
+  font-size: 12px;
+  color: var(--dim);
+  margin-top: 2px;
+  line-height: 18px;
+}
+#fc .right {
+  min-width: 0;
+}
+#fc .info {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  align-content: flex-start;
+  gap: 2px 12px;
+  margin-bottom: 8px;
+  height: 50px;
+  overflow: hidden;
+}
+#fc .info h2 {
+  margin: 0;
+  font-size: 18px;
+}
+#fc .info .t {
+  font-family: var(--mono);
+  font-size: 12.5px;
+  color: var(--dim);
+}
+#fc .info .what {
+  font-size: 15px;
+  flex: 1 1 0;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#fc .info .badge {
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 48%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#fc .info .sub {
+  flex-basis: 100%;
+  font-size: 12.5px;
+  color: var(--dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#fc .badge {
+  border: 1px solid var(--flag);
+  color: var(--badge-fg);
+  background: color-mix(in srgb, var(--flag) 10%, transparent);
+  border-radius: 8px;
+  padding: 1px 9px;
+  font-size: 13px;
+}
+#fc .pipe {
+  display: grid;
+  grid-template-columns: 16px var(--w) 16px minmax(0, 1fr) 16px var(--w) 16px var(--w);
+  grid-template-rows: auto repeat(3, var(--rh));
+  gap: 6px 4px;
+  --w:calc(var(--rh) * 16 / 9);
+}
+#fc {
+  --rh:110px;
+}
+#fc .rl {
+  font-size: 12px;
+  color: var(--dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#fc .ar {
+  color: var(--arrow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+}
+#fc .cell {
+  min-width: 0;
+  height: var(--rh);
+  position: relative;
+}
+#fc .im {
+  margin: 0;
+  height: 100%;
+  position: relative;
+  background: #000;
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  cursor: zoom-in;
+}
+#fc .im:hover {
+  border-color: var(--fg);
+}
+#fc .im img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+#fc .im figcaption {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  max-width: 100%;
+  padding: 0 6px;
+  font-size: 11.5px;
+  line-height: 18px;
+  background: var(--cap);
+  border-top-right-radius: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
+}
+#fc .none {
+  height: 100%;
+  width: 100%;
+  border: 1px dashed var(--line);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--none);
+  font-size: 12px;
+  text-align: center;
+  padding: 4px;
+}
+#fc .seek {
+  appearance: none;
+  background: none;
+  cursor: pointer;
+  flex-direction: column;
+  line-height: 1.5;
+}
+#fc .seek:hover {
+  border-color: var(--fg);
+  color: var(--fg);
+}
+#fc .insbox {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+#fc .eq {
+  font-size: 11.5px;
+  color: var(--dim);
+  line-height: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#fc .ins {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  flex: 1 1 auto;
+  min-height: 0;
+  align-content: flex-start;
+  overflow: hidden;
+}
+#fc .ins .im {
+  height: var(--th,48px);
+  aspect-ratio: 16/9;
+}
+#fc .ins .im figcaption {
+  font-size: 11px;
+  line-height: 16px;
+}
+#fc .chipjob {
+  height: 100%;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 6px 8px;
+  font-size: 12.5px;
+  color: var(--dim);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow: hidden;
+}
+#fc .chipjob b {
+  color: var(--fg);
+  font-family: var(--mono);
+  font-weight: 600;
+}
+#fc .chipjob .ins {
+  flex: 1 1 auto;
+}
+#fc .chipjob .ins .im {
+  height: 46px;
+}
+#fc .chipjob .rvl {
+  color: var(--fg);
+}
+#fc .im.vin {
+  border: 2px solid var(--c-fed);
+}
+#fc .im.bl {
+  border: 2px solid var(--c-wm);
+}
+#fc .im .tg {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  max-width: calc(100% - 6px);
+  font-size: 10.5px;
+  line-height: 16px;
+  padding: 0 6px;
+  border-radius: 7px;
+  background: var(--c-fed);
+  color: var(--play-fg);
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
+}
+#fc .im .tg.no {
+  background: var(--cap);
+  color: var(--dim);
+  font-weight: 500;
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+#fc .im .tg.bl {
+  background: var(--c-wm);
+}
+#fc .right {
+  max-height: var(--rmax,none);
+  overflow: auto;
+  padding-right: 4px;
+}
+#fc .info .use,
+#fc .chain .use {
+  appearance: none;
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0 7px;
+  margin-left: 4px;
+  font: 12px var(--mono);
+  cursor: pointer;
+  color: var(--dim);
+}
+#fc .info .use.on,
+#fc .chain .use.on {
+  border-color: var(--green);
+  color: var(--fg);
+}
+#fc .cb {
+  border: 1.5px solid var(--c-fed);
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin-bottom: 10px;
+}
+#fc .cb-h {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+#fc .cb-h b {
+  color: var(--c-fed);
+  font-size: 14px;
+}
+#fc .sent {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 6px;
+}
+#fc .sent .im,
+#fc .chain .im,
+#fc .mk-in .im {
+  height: auto;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  overflow: visible;
+}
+#fc .sent .im img,
+#fc .chain .im img,
+#fc .mk-in .im img {
+  height: auto;
+  aspect-ratio: 16/9;
+  background: #000;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+}
+#fc .sent .im.vin img,
+#fc .chain .im.vin img {
+  border: 2px solid var(--c-fed);
+}
+#fc .sent .im.bl img,
+#fc .chain .im.bl img {
+  border: 2px solid var(--c-wm);
+}
+#fc .sent .im:hover img,
+#fc .chain .im:hover img,
+#fc .mk-in .im:hover img {
+  border-color: var(--fg);
+}
+#fc .sent .im figcaption,
+#fc .chain .im figcaption,
+#fc .mk-in .im figcaption {
+  position: static;
+  background: none;
+  padding: 2px 1px 0;
+  white-space: normal;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: var(--fg);
+}
+#fc .sent .im.vin,
+#fc .chain .im.vin,
+#fc .sent .im.bl,
+#fc .chain .im.bl {
+  border: 0;
+}
+#fc .rvl {
+  margin-top: 6px;
+  font-size: 12.5px;
+  color: var(--fg);
+}
+#fc .prm {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 6px;
+  margin-top: 6px;
+}
+#fc .prm span {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0 7px;
+  font: 12px/18px var(--mono);
+  color: var(--dim);
+}
+#fc .vpbox {
+  margin-top: 6px;
+}
+#fc .vp {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--prompt);
+  max-height: 6.2em;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(#000 60%, transparent);
+  mask-image: linear-gradient(#000 60%, transparent);
+}
+#fc .vp.open {
+  max-height: none;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+#fc .vp a.imref {
+  color: var(--c-fed);
+  font-weight: 700;
+  cursor: zoom-in;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+#fc .cb-x {
+  appearance: none;
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0 9px;
+  margin-top: 3px;
+  font-size: 12px;
+  cursor: pointer;
+  color: var(--dim);
+}
+#fc .chain {
+  display: grid;
+  grid-template-columns: 62px repeat(3, minmax(0, 1fr));
+  gap: 6px 10px;
+  align-items: start;
+}
+#fc .ch-h {
+  font-size: 12px;
+  color: var(--dim);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 2px;
+}
+#fc .ch-n {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: flex-start;
+  padding-top: 2px;
+}
+#fc .ch-n .use {
+  margin-left: 0;
+}
+#fc .ch-n small {
+  font: 11px var(--mono);
+  color: var(--dim);
+}
+#fc .ch-c {
+  min-width: 0;
+  border-radius: 6px;
+}
+#fc .ch-c.cur,
+#fc .ch-n.cur {
+  background: color-mix(in srgb, var(--green) 10%, transparent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--green) 40%, transparent);
+}
+#fc .ch-c .none {
+  aspect-ratio: 16/9;
+  height: auto;
+}
+#fc details.mk {
+  margin-top: 4px;
+  font-size: 12.5px;
+}
+#fc details.mk summary {
+  cursor: pointer;
+  color: var(--c-in);
+}
+#fc .mk-in {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(118px, 1fr));
+  gap: 4px;
+  margin-top: 4px;
+}
+#fc .mk-in .im figcaption {
+  -webkit-line-clamp: 3;
+  font-size: 11px;
+}
+#fc .mk-p {
+  margin-top: 4px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--prompt);
+  max-height: 16em;
+  overflow: auto;
+}
+#fc .prompts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+#fc .pr {
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--c);
+  border-radius: 6px;
+  padding: 6px 10px;
+  min-width: 0;
+}
+#fc .pr-h {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 12.5px;
+}
+#fc .pr-h .dim {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#fc .pr-h button {
+  appearance: none;
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0 8px;
+  font-size: 12px;
+  cursor: pointer;
+  color: var(--dim);
+}
+#fc .pr-h button:hover {
+  color: var(--fg);
+  border-color: var(--fg);
+}
+#fc .pr-t {
+  margin-top: 3px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--prompt);
+  max-height: 4.65em;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(#000 55%, transparent);
+  mask-image: linear-gradient(#000 55%, transparent);
+}
+#fc .pr.open .pr-t {
+  max-height: none;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+#fc .tl {
+  position: sticky;
+  bottom: 0;
+  z-index: 5;
+  margin-bottom: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  box-shadow: 0 -10px 24px var(--shade);
+}
+#fc .ctl {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  margin-bottom: 8px;
+}
+#fc .play {
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--green);
+  color: var(--play-fg);
+  cursor: pointer;
+  font-size: 13px;
+  flex: none;
+}
+#fc .clock {
+  color: var(--dim);
+  font-family: var(--mono);
+  font-size: 13px;
+  white-space: nowrap;
+}
+#fc .clock time {
+  color: var(--fg);
+  font-size: 15px;
+  font-weight: 700;
+}
+#fc .legend {
+  margin-left: auto;
+  display: flex;
+  gap: 12px;
+  font-size: 12px;
+  color: var(--dim);
+  flex-wrap: wrap;
+}
+#fc .legend i {
+  display: inline-block;
+  width: 14px;
+  height: 10px;
+  border-radius: 2px;
+  margin-right: 5px;
+  vertical-align: -1px;
+}
+#fc .track {
+  position: relative;
+  height: 44px;
+  background: var(--track);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+}
+#fc .bar {
+  position: absolute;
+  top: 8px;
+  height: 26px;
+  margin-left: 1px;
+  padding: 0 5px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+  border: 0;
+  border-radius: 4px;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--fg);
+  cursor: pointer;
+  background: var(--bar);
+  box-shadow: inset 0 0 0 1px var(--bar-ring);
+}
+#fc .bar.two {
+  background: var(--bar2);
+}
+#fc .bar.tiny {
+  color: transparent;
+}
+#fc .bar.flag {
+  box-shadow: inset 0 0 0 2px var(--flag);
+}
+#fc .bar.live {
+  background: var(--live);
+  box-shadow: inset 0 0 0 2px var(--green);
+  color: var(--on);
+}
+#fc .bar.live.flag {
+  box-shadow: inset 0 0 0 2px var(--flag);
+}
+#fc .mark {
+  position: absolute;
+  top: -9px;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 9px solid var(--flag);
+  margin-left: -6px;
+  pointer-events: none;
+}
+#fc .head {
+  position: absolute;
+  top: -6px;
+  bottom: -4px;
+  width: 2px;
+  margin-left: -1px;
+  background: var(--playhead);
+  box-shadow: 0 0 8px var(--playhead);
+  pointer-events: none;
+}
+#fc .head::after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -5px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--playhead);
+  border: 3px solid var(--card);
+  box-sizing: border-box;
+}
+#fc .ticks {
+  position: relative;
+  height: 16px;
+  margin-top: 3px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--dim);
+}
+#fc .ticks span {
+  position: absolute;
+  transform: translateX(-50%);
+}
+#fc .ticks .s {
+  transform: none;
+}
+#fc .ticks .e {
+  transform: translateX(-100%);
+}
+#fc .peek {
+  position: absolute;
+  bottom: 52px;
+  width: 220px;
+  margin-left: -110px;
+  background: var(--head);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 4px;
+  pointer-events: none;
+  z-index: 6;
+}
+#fc .peek img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  display: block;
+  border-radius: 4px;
+  background: #000;
+}
+#fc .peek div {
+  font-size: 12px;
+  padding: 3px 2px 0;
+  line-height: 1.4;
+}
+#fc dialog#lb {
+  border: 1px solid var(--line);
+  background: var(--lb);
+  color: var(--fg);
+  border-radius: 10px;
+  padding: 0;
+  max-width: 98vw;
+  max-height: 98vh;
+  width: 98vw;
+  height: 96vh;
+}
+#fc dialog#lb::backdrop {
+  background: rgba(0, 0, 0, .86);
+}
+#fc .lb-h {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 12px;
+  border-bottom: 1px solid var(--line);
+  font-size: 13px;
+}
+#fc .lb-h b {
+  font-weight: 600;
+}
+#fc .lb-h .dim {
+  margin-left: auto;
+}
+#fc .lb-h button {
+  appearance: none;
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 0 9px;
+}
+#fc .lb-b {
+  height: calc(96vh - 40px);
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+}
+#fc .lb-b img {
+  max-width: 100%;
+  max-height: 100%;
+  cursor: zoom-in;
+}
+#fc .lb-b.full {
+  display: block;
+}
+#fc .lb-b.full img {
+  max-width: none;
+  max-height: none;
+  cursor: zoom-out;
+}
+#fc .views {
+  display: flex;
+  gap: 0;
+}
+#fc .views .chip {
+  border-radius: 0;
+}
+#fc .views .chip:first-child {
+  border-radius: 10px 0 0 10px;
+}
+#fc .views .chip:last-child {
+  border-radius: 0 10px 10px 0;
+  margin-left: -1px;
+}
+#fc #console.gview {
+  padding-top: 6px;
+}
+#fc #console.gview .card.gv {
+  margin-top: 6px;
+}
+#fc .gv {
+  padding: 6px 8px 6px;
+}
+#fc .gv-canvas {
+  position: relative;
+  height: var(--gvh,520px);
+  overflow: hidden;
+  border-radius: 6px;
+  background-color: #1b1b1c;
+  background-image: radial-gradient(#323336 1.1px, transparent 1.3px);
+  background-size: var(--dot,20px) var(--dot,20px);
+  background-position: var(--dotx,0) var(--doty,0);
+  touch-action: none;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  color: #ddd;
+}
+#fc .gv-canvas.pan {
+  cursor: grabbing;
+}
+#fc .gv-world {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform-origin: 0 0;
+}
+#fc .gv-links {
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+#fc .gv-links polyline {
+  fill: none;
+  stroke-width: 2.6;
+  stroke-linejoin: round;
+}
+#fc .gv-links circle {
+  stroke: #1b1b1c;
+  stroke-width: 1.5;
+}
+#fc .cg {
+  position: absolute;
+  border-radius: 6px;
+  background: rgba(136, 170, 170, .10);
+  border: 1.5px solid rgba(136, 170, 170, .55);
+  pointer-events: none;
+}
+#fc .cg b {
+  position: absolute;
+  left: 10px;
+  top: 5px;
+  right: 10px;
+  color: #a9c8c8;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2;
+}
+#fc .cn {
+  position: absolute;
+  border-radius: 8px;
+  background: var(--bg,#353535);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .55), 0 5px 14px rgba(0, 0, 0, .4);
+  font:
+    12.5px/1.35 -apple-system,
+    BlinkMacSystemFont,
+    "PingFang SC",
+    "Noto Sans CJK SC",
+    "Microsoft YaHei",
+    sans-serif;
+  color: #ddd;
+}
+#fc .cn-t {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 10px;
+  border-radius: 8px 8px 0 0;
+  background: var(--tc,#222);
+  font-size: 15px;
+  color: #ececec;
+  white-space: nowrap;
+  overflow: hidden;
+}
+#fc .cn-t::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #8d8d8d;
+  flex: none;
+}
+#fc .cn-t span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+#fc .cn-t .x {
+  appearance: none;
+  border: 0;
+  background: none;
+  padding: 0;
+  font: inherit;
+  color: #fff;
+  text-decoration: underline dotted;
+  cursor: pointer;
+}
+#fc .cn-i,
+#fc .cn-o {
+  position: absolute;
+  height: 20px;
+  line-height: 20px;
+  font-size: 12.5px;
+  color: #b3b3b3;
+  white-space: nowrap;
+}
+#fc .cn-i {
+  left: 22px;
+}
+#fc .cn-o {
+  right: 22px;
+}
+#fc .cn-i::before,
+#fc .cn-o::after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #8d8d8d;
+}
+#fc .cn-i::before {
+  left: -18px;
+  background: var(--lc,#64b5f6);
+}
+#fc .cn-o::after {
+  right: -18px;
+}
+#fc .cn-o.on::after {
+  background: var(--lc,#64b5f6);
+}
+#fc .cn-w {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  height: 20px;
+  border-radius: 10px;
+  background: #222;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 12px;
+  font-size: 12.5px;
+  color: #9a9a9a;
+  white-space: nowrap;
+  overflow: hidden;
+}
+#fc .cn-w b {
+  color: #e2e2e2;
+  font-weight: 400;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#fc .cn-p {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  background: #222;
+  border-radius: 6px;
+  padding: 5px 8px;
+  font:
+    12px/1.45 ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Consolas,
+    "PingFang SC",
+    monospace;
+  color: #dcdcdc;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  overflow: hidden;
+  cursor: pointer;
+}
+#fc .cn-p:hover {
+  outline: 1px solid #666;
+}
+#fc .cn-m {
+  position: absolute;
+  left: 6px;
+  right: 6px;
+}
+#fc .cn-m .im {
+  height: 100%;
+  margin: 0;
+  border: 0;
+  border-radius: 5px;
+  background: #111;
+}
+#fc .cn-m .im figcaption {
+  display: none;
+}
+#fc .cn-m .none {
+  border-color: #444;
+  color: #888;
+}
+#fc .cn-v {
+  position: absolute;
+}
+#fc .cn-v video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  border-radius: 5px;
+  object-fit: contain;
+}
+#fc .cn-x {
+  appearance: none;
+  flex: none;
+  margin-left: auto;
+  font: 600 12.5px/18px var(--mono);
+  padding: 0 7px;
+  border-radius: 9px;
+  border: 1.5px dashed #b9e2b9;
+  color: #dff3df;
+  background: rgba(0, 0, 0, .25);
+  cursor: pointer;
+  white-space: nowrap;
+}
+#fc .cn-x:hover {
+  border-style: solid;
+}
+#fc .cn-x.bad {
+  border-color: #ff8f8f;
+  color: #ffd0d0;
+}
+#fc .gv-tl,
+#fc .gv-tr {
+  position: absolute;
+  top: 4px;
+  z-index: 3;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  pointer-events: none;
+}
+#fc .gv-tl {
+  left: 10px;
+  max-width: calc(100% - 330px);
+}
+#fc .gv-tr {
+  right: 10px;
+}
+#fc .gv-tl > *,
+#fc .gv-tr > * {
+  pointer-events: auto;
+}
+#fc .gv-key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 10px;
+  font-size: 12px;
+  color: #aaa;
+  background: rgba(27, 27, 28, .82);
+  border-radius: 6px;
+  padding: 2px 8px;
+}
+#fc .gv-key i {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  margin-right: 4px;
+  vertical-align: -1px;
+}
+#fc .gv-tl .badge {
+  background: rgba(60, 20, 20, .9);
+}
+#fc .gv-tr .chip {
+  background: rgba(27, 27, 28, .88);
+  color: #ddd;
+  border-color: #555;
+}
+#fc .gv-tr .chip:hover {
+  border-color: #9ad09a;
+}
+#fc .gv-pop {
+  position: absolute;
+  z-index: 4;
+  max-width: min(560px, 96%);
+  background: var(--head);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  box-shadow: 0 8px 24px var(--shade);
+  cursor: auto;
+  color: var(--fg);
+}
+#fc .gv-pop b {
+  display: block;
+  margin-bottom: 3px;
+}
+#fc .gv-pop table {
+  border-collapse: collapse;
+  width: 100%;
+}
+#fc .gv-pop td {
+  padding: 2px 8px 2px 0;
+  vertical-align: top;
+  white-space: nowrap;
+}
+#fc .gv-pop td:first-child {
+  font-family: var(--mono);
+}
+#fc .gv-pop .use {
+  color: var(--green);
+}
+#fc .gv-pop .no {
+  color: var(--dim);
+}
+#fc .gv-pop .err {
+  color: var(--flag-fg);
+  white-space: normal;
+  min-width: 12em;
+}
+#fc .gv-pop.txt {
+  max-width: min(760px, 94%);
+  max-height: 86%;
+  overflow: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font: 13px/1.6 var(--mono);
+}
+#fc #console.gview .tl {
+  padding-top: 6px;
+  padding-bottom: 4px;
+  margin-top: 6px;
+}
+#fc .tl.wl .ctl {
+  margin-bottom: 4px;
+}
+#fc .tl.wl .play {
+  width: 28px;
+  height: 28px;
+}
+#fc .tl.wl .track {
+  height: 34px;
+}
+#fc .tl.wl .bar {
+  top: 5px;
+  height: 24px;
+}
+#fc .tl.wl .ticks {
+  height: 14px;
+  margin-top: 1px;
+}
+#fc .tl.wl .track,
+#fc .tl.wl .ticks,
+#fc .tl.wl .lanes {
+  margin-left: 50px;
+}
+#fc .tl.wl .peek {
+  bottom: 84px;
+  margin-left: -60px;
+}
+#fc .lanes {
+  position: relative;
+  margin-top: 3px;
+  display: grid;
+  gap: 2px;
+}
+#fc .lane {
+  position: relative;
+  height: 9px;
+}
+#fc .lane b {
+  position: absolute;
+  right: 100%;
+  margin-right: 8px;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--dim);
+  white-space: nowrap;
+  line-height: 9px;
+}
+#fc .lc {
+  position: absolute;
+  top: 0;
+  height: 9px;
+  margin-left: 1px;
+  border-radius: 2px;
+  font: 8px/9px var(--mono);
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  color: var(--fg);
+}
+#fc .lc.wm {
+  background: color-mix(in srgb, var(--c-wm) 50%, transparent);
+}
+#fc .lc.wm.off {
+  background: none;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--c-wm) 60%, transparent);
+  color: var(--dim);
+}
+#fc .lc.k {
+  background: color-mix(in srgb, var(--c-in) calc(var(--a) * 100%), transparent);
+}
+#fc .lc.g {
+  background: color-mix(in srgb, var(--c-fed) 22%, transparent);
+}
+#fc .lc.g.x {
+  background: color-mix(in srgb, var(--c-fed) 70%, transparent);
+  color: var(--play-fg);
+  font-weight: 700;
+}
+#fc .lc.bad {
+  box-shadow: inset 0 0 0 1.5px var(--flag);
+}
+#fc .lc.live {
+  outline: 1.5px solid var(--on);
+  outline-offset: 0;
+  z-index: 1;
+}
+@media (max-width:700px) {
+  #fc .gv-key {
+    display: none;
+  }
+  #fc .gv-tl {
+    right: 10px;
+    max-width: none;
+  }
+  #fc #gv-flag {
+    min-width: 0;
+    max-width: 100%;
+  }
+  #fc .gv-tl .badge {
+    display: block;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 12px;
+  }
+  #fc .gv-tr {
+    top: 34px;
+  }
+  #fc .gv-tr .chip {
+    font-size: 12px;
+    padding: 1px 8px;
+  }
+}
+@media (max-width:1000px) {
+  #fc .main {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  #fc .pipe-scroll {
+    overflow-x: auto;
+  }
+  #fc .pipe {
+    min-width: 860px;
+  }
+  #fc .legend {
+    margin-left: 0;
+  }
+}
